@@ -15,10 +15,12 @@ https://raj-capstone-app.herokuapp.com/
 
 
 Authentication:
+
 The API uses Access tokens generated via Auth0 to authenticate requests.
 Role based authentication has been setup for 3 roles using AUTH0
 
 Roles & Permissions
+
 1.Casting Assistant
     -Can view actors and movies
 2.Casting Director
