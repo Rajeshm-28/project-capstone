@@ -48,10 +48,6 @@ class CastingTestCase(unittest.TestCase):
             "Authorization": self.token
         }
 
-        self.invalid_auth = {
-            "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImFucUh0cm5PZ254UDZjMURVNkVPaiJ9.eyJpc3MiOiJodHRwczovL3JhamZzbmQuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVlY2E0NDFmZWU1NmM0MGM2ZDgzYzAyMSIsImF1ZCI6IkNhcGVBdXRoIiwiaWF0IjoxNTkwNTA4NzcyLCJleHAiOjE1OTA1OTUxNzIsImF6cCI6IkRuSUZ0NW0zMmk0SHZzQndlZ0VNMjJjYVNxcERWMUFjIiwic2NvcGUiOiIiLCJwZXJtaXNzaW9ucyI6WyJnZXQ6Y2Fwc3RvbmUiXX0.M75gvpb-XVFKNHkstmrr9d6U2BlXL3rfpqzqroB39-P281WXcVCQntQnreimCYuJf0OxtXknR3J-lCvKwY2afb2gVtLhYgMSC16gcrGwuCbePku6EGfiy1jobT5AoVEH4obYLqVQzsOz7dspA3aVBRKhjLfBXAw2PWT_tWlPPvzewL2aVEZLZ_KhMNxPru2iFb8jNi4lXncK5WGA25J0530rhMm9vAsqaF5JQPXiM_ZVy1TXmO0kIv2Wd_HJZqcITHdmgCnuUMIwjmQ_5dKjvi_-6yvwJeED-ifQot-lBDoyikbQ7-OZxGc3UjJbrl65_fksQH8OIRaUvztNZpWLZQ"
-        }
-
     def tearDown(self):
         """Executed after each test"""
         pass
@@ -67,7 +63,9 @@ class CastingTestCase(unittest.TestCase):
 
     def test_2_create_actor(self):
 
-        res = self.client().post('/actors', json=self.new_actor, headers=self.auth)
+        res = self.client()\
+            .post('/actors', json=self.new_actor, headers=self.auth)
+
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -75,7 +73,9 @@ class CastingTestCase(unittest.TestCase):
 
     def test_3_create_movie(self):
 
-        res = self.client().post('/movies', json=self.new_movie, headers=self.auth)
+        res = self.client()\
+            .post('/movies', json=self.new_movie, headers=self.auth)
+
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -119,7 +119,9 @@ class CastingTestCase(unittest.TestCase):
 
     def test_8_update_actor(self):
 
-        res = self.client().patch('/actors/1', json=self.update_actor, headers=self.auth)
+        res = self.client()\
+            .patch('/actors/1', json=self.update_actor, headers=self.auth)
+
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -127,7 +129,9 @@ class CastingTestCase(unittest.TestCase):
 
     def test_9_update_movie(self):
 
-        res = self.client().patch('/movies/1', json=self.update_movie, headers=self.auth)
+        res = self.client()\
+            .patch('/movies/1', json=self.update_movie, headers=self.auth)
+
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -171,7 +175,9 @@ class CastingTestCase(unittest.TestCase):
 
     def test_E5_404_update_actor(self):
 
-        res = self.client().patch('/actors/100', json=self.update_actor, headers=self.auth)
+        res = self.client()\
+            .patch('/actors/100', json=self.update_actor, headers=self.auth)
+
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -180,7 +186,9 @@ class CastingTestCase(unittest.TestCase):
 
     def test_E6_404_update_movie(self):
 
-        res = self.client().patch('/movies/100', json=self.update_movie, headers=self.auth)
+        res = self.client()\
+            .patch('/movies/100', json=self.update_movie, headers=self.auth)
+
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -190,6 +198,7 @@ class CastingTestCase(unittest.TestCase):
     def test_E7_404_delete_actor(self):
 
         res = self.client().delete('/actors/100', headers=self.auth)
+
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
@@ -212,14 +221,6 @@ class CastingTestCase(unittest.TestCase):
 
         self.assertEqual(res.status_code, 401)
         self.assertEqual(data['code'], 'authorization_header_missing')
-
-    def test_E10_403_unauthorized(self):
-
-        res = self.client().post('/movies', json=self.new_movie, headers=self.invalid_auth)
-        data = json.loads(res.data)
-
-        self.assertEqual(res.status_code, 403)
-        self.assertEqual(data['code'], 'unauthorized')
 
     def test_Z_delete_actor(self):
 
