@@ -143,6 +143,19 @@ Sample input:
 	"gender": "M"
 }
 
+Sample output:
+
+{
+    "actor": {
+        "age": 52,
+        "gender": "M",
+        "id": 3,
+        "name": "jason statham"
+    },
+    "message": "Actor Successfully Added!",
+    "success": true
+}
+
 POST /movies 
  - create a new movie
  - authentication required. 
@@ -154,6 +167,16 @@ Sample input:
 	"release_date": "14/08/2020"
 }
 
+Sample Output:
+{
+    "message": "Movie Successfully Added!",
+    "movies": {
+        "id": 1,
+        "release_date": "02/04/2021",
+        "title": "F9: The Fast Saga"
+    },
+    "success": true
+}
 
 PATCH /actors/<actor_id> 
  - Update the existing actor
