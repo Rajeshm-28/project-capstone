@@ -1,4 +1,4 @@
-Capstone Project
+                                    Capstone Project
 Casting Agency
 
 The Casting Agency is responsible for creating movies and managing and assigning actors to those movies.
@@ -6,50 +6,80 @@ The Casting Agency is responsible for creating movies and managing and assigning
 This Flask application is hosted via Heroku and enabled role based authentication and roles-based access control(RBAC) via Auth0 (third-party authentication system).
 
 
-About the Stack
+About the Stack:
+
 The project is hosted in Heroku. 
 
 Endpoint for application:
+
 https://raj-capstone-app.herokuapp.com/
 
 
 Authentication:
+
 The API uses Access tokens generated via Auth0 to authenticate requests.
+
 Role based authentication has been setup for 3 roles using AUTH0
 
 Roles & Permissions
+
 1.Casting Assistant
+
     -Can view actors and movies
+
 2.Casting Director
+
     -Can view actors and movies
+
     -Add or delete an actors from the database 
+
     -Modify actors or movies
+
 3.Executive Producer
+
     -Can view actors and movies
+
     -Add or delete an actors & movies from the database 
+
     -Modify actors or movies
 
 Endpoints:
+
 GET    '/'
+
 GET    '/actors'
+
 GET    '/movies'
+
 GET    '/actors/<actor_id>'
+
 GET    '/movies/<movie_id>'
+
 POST   '/actors'
+
 POST   '/movies'
+
 PATCH  '/actors/<actor_id>'
+
 PATCH  '/movies/<movie_id>'
+
 DELETE '/actors/<actor_id>'
+
 DELETE '/movies/<movie_id>'
+
 
 GET    '/'
  - A welcome message will be presented.
  - No authentication required. 
  - Sample URL: https://raj-capstone-app.herokuapp.com/
  - returns:
+
 {
+
      "Message":"Welcome To Casting Agency",
+
      "success":true
+
 }
 
 GET /actors 
@@ -58,22 +88,39 @@ GET /actors
  - Sample URL: https://raj-capstone-app.herokuapp.com/actors
 
 Sample output:
+
 {
+
     "actors": [
+
         {
+
             "age": 52,
+
             "gender": "M",
+
             "id": 1,
+
             "name": "Vin Diesel"
+
         },
+
         {
+
             "age": 48,
+
             "gender": "M",
+
             "id": 2,
+
             "name": "Dwayne johnson"
+
         }
+
     ],
+
     "success": true
+
 }
 
 GET /movies 
@@ -84,19 +131,32 @@ GET /movies
 Sample output:
 
 {
+
     "movies": [
+
         {
+
             "id": 1,
+
             "release_date": "02/04/2021",
+
             "title": "F9: The Fast Saga"
+
         },
+
         {
             "id": 2,
+
             "release_date": "26/06/2020",
+
             "title": "Top Gun: Maverick"
+
         }
+
     ],
+
     "success": true
+
 }
 
 GET /actors/<actor_id> 
@@ -105,14 +165,23 @@ GET /actors/<actor_id>
  - Sample URL: https://raj-capstone-app.herokuapp.com/actors/1
  
 Sample output:
+
 {
+
     "actors":{
+
             "age": 52,
+
             "gender": "M",
+
             "id": 1,
+
             "name": "Vin Diesel"
+
         },
+
     "success": true
+
 }
 
 GET /movies/<movie_id> 
@@ -123,11 +192,17 @@ GET /movies/<movie_id>
 Sample output:
 
 {
+
     "movies":{
+
             "id": 1,
+
             "release_date": "02/04/2021",
+
             "title": "F9: The Fast Saga"
+
         },
+
     "success": true
 }
 
@@ -137,23 +212,36 @@ POST /actors
  - Sample URL: https://raj-capstone-app.herokuapp.com/actors
 
 Sample input:
+
 {
 	"name": "jason statham ",
+
 	"age": "52",
+
 	"gender": "M"
+
 }
 
 Sample output:
 
 {
+
     "actor": {
+
         "age": 52,
+
         "gender": "M",
+
         "id": 3,
+
         "name": "jason statham"
+
     },
+
     "message": "Actor Successfully Added!",
+
     "success": true
+
 }
 
 POST /movies 
@@ -162,20 +250,33 @@ POST /movies
  - Sample URL: https://raj-capstone-app.herokuapp.com/movies
  
 Sample input:
+
 {
+
 	"title": "Wonder Women 1984",
+
 	"release_date": "14/08/2020"
+
 }
 
 Sample Output:
+
 {
+
     "message": "Movie Successfully Added!",
+
     "movies": {
+
         "id": 1,
+
         "release_date": "02/04/2021",
+
         "title": "F9: The Fast Saga"
+
     },
+
     "success": true
+
 }
 
 PATCH /actors/<actor_id> 
@@ -186,7 +287,9 @@ PATCH /actors/<actor_id>
 Sample input:
 
 {
+
 	"age": "53"
+
 }
 
 PATCH /movies/<movie_id> 
@@ -197,7 +300,9 @@ PATCH /movies/<movie_id>
 Sample input:
 
 {
+
 	"release_date": "14/09/2020"
+
 }
 
 DELETE /actors/<actor_id> 
@@ -208,8 +313,11 @@ DELETE /actors/<actor_id>
 Sample Output:
 
 {
+
     'success': True,
+
     'message': "Actor successfully deleted!"
+
 }
 
 DELETE /movies/<movie_id> 
@@ -220,34 +328,48 @@ DELETE /movies/<movie_id>
 Sample Output:
 
 {
+
     'success': True,
+
     'message': "Movie successfully deleted!"
+
 }
 
-Error Handling
+Error Handling:
+
 Errors are returned as JSON objects in the following format:
 
 {
+
     "success": False, 
+
     "error": 404,
+
     "message": "Resource Not Found"
+
 }
 
 Error Response:
 
 400 Bad Request        - the request could not be understood or was missing required parameters.
+
 401 Unauthorized       - authentication failed or user doesn't have permissions for requested operation.
+
 403 Forbidden          - access denied.
+
 404 Resorurce Not Found- resource was not found.
+
 405 Method Not Allowed - requested method is not supported for resource.
 
 
 Testing:
 
 Live testing:
+
 Application hosted in heroku can be tested using the below Bearer Token
 
 Endpoint for application:
+
 https://raj-capstone-app.herokuapp.com/
 
 1.Casting Assistant Bearer Token:
@@ -275,9 +397,11 @@ Create a test postgre database.
 Setup the 2 environment variables using export command.
 
 1. DATABASE_URL=postgresql://username:password@localhost:5432/databasename
+
    replace username,password & databasename
 
     Example:
+
     export DATABASE_URL=postgresql://DELL@localhost:5432/capstonedb
 
 2. ACCESS_TOKEN -This is the Bearer token generated from AUTH0 for the role - Executive Producer which 
@@ -287,9 +411,11 @@ Setup the 2 environment variables using export command.
 
    
 Run the unit test using the below command.
+
     python test_app.py
 
 
 Test Result is availble in the below file:
+
 capstone-postman-collection.postman_test_run.json
 
