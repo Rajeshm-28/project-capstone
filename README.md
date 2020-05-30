@@ -8,9 +8,11 @@ This Flask application is hosted via Heroku and enabled role based authenticatio
 
 
 About the Stack
+
 The project is hosted in Heroku. 
 
 Endpoint for application:
+
 https://raj-capstone-app.herokuapp.com/
 
 
@@ -22,28 +24,49 @@ Role based authentication has been setup for 3 roles using AUTH0
 Roles & Permissions
 
 1.Casting Assistant
+
     -Can view actors and movies
+    
 2.Casting Director
+
     -Can view actors and movies
+    
     -Add or delete an actors from the database 
+    
     -Modify actors or movies
+    
 3.Executive Producer
+
     -Can view actors and movies
+    
     -Add or delete an actors & movies from the database 
+    
     -Modify actors or movies
 
 Endpoints:
+
 GET    '/'
+
 GET    '/actors'
+
 GET    '/movies'
+
 GET    '/actors/<actor_id>'
+
 GET    '/movies/<movie_id>'
+
 POST   '/actors'
+
 POST   '/movies'
+
 PATCH  '/actors/<actor_id>'
+
 PATCH  '/movies/<movie_id>'
+
 DELETE '/actors/<actor_id>'
+
 DELETE '/movies/<movie_id>'
+
 
 GET    '/'
  - A welcome message will be presented.
