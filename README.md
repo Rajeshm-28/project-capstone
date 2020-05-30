@@ -1,4 +1,5 @@
-Capstone Project
+                                                       Capstone Project
+
 Casting Agency
 
 The Casting Agency is responsible for creating movies and managing and assigning actors to those movies.
